@@ -35,5 +35,6 @@ class HomeController extends Controller
         // return $exam->questions;
         return view('exam_page',compact('exam','exam_Q','result'));
     }
+   
     
 }

@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 })->name('index');
-Route::get('/admin', function () {
-    return view('admin.index');
-})->name('index_admin')->middleware('auth');
+// Route::get('/admin', function () {
+//     return view('admin.index');
+// })->name('index_admin')->middleware('auth');
 
 // Route::get('/admin/{id}', function () {
 //     return view('admin.index');
@@ -38,5 +38,14 @@ Route::middleware('auth')->group(function(){
     Route::resource('/exams', 'App\Http\Controllers\ExamController');
     Route::resource('/questions', 'App\Http\Controllers\QuestionController');
     Route::resource('/results', 'App\Http\Controllers\ResultController');
+
+});
+
+Route::middleware('role:Admin')->group(function(){
+   
+    
+    Route::get('/admin', function () {
+        return view('admin.index');
+    })->name('index_admin');
 
 });
